@@ -23,7 +23,7 @@ export class MovieView extends React.Component {
     return (
       <div className="movie-view">
         <div className="movie-poster">
-          src={movie.ImagePath} />
+          <img src={movie.ImagePath} crossOrigin="true"/>
         </div>
         <div className="movie-title">
           <span className="title">Title: </span>
@@ -36,10 +36,6 @@ export class MovieView extends React.Component {
         <div className="movie-genre">
           <span className="genre">Genre: </span>
           <span className="value">{movie.Genre.Name}</span>
-        </div>
-        <div className="genre-description">
-          <span className="genre">Description: </span>
-          <span className="value">{movie.Genre.Description}</span>
         </div>
         <div className="movie-director">
           <span className="director">Director: </span>
@@ -57,7 +53,7 @@ MovieView.propTypes = {
     Title: PropTypes.string,
     Description: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
+      Name: PropTypes.string.isRequired
     }),
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,

@@ -13,7 +13,6 @@ export class MainView extends React.Component {
       movies: [],
       selectedMovie: null,
       user: null,
-      registered: null
     };
   }
 
@@ -28,11 +27,6 @@ export class MainView extends React.Component {
         console.log(error);
       });
   }
-
-  componentWillUnmount(){
-// code executed just before the moment the component gets removed from the DOM.
-
-}
 
   setSelectedMovie(movie) {
     this.setState({
