@@ -40,7 +40,7 @@ export function RegistrationView(props) {
       isReq = false;
     }
     if (!birthday) {
-      setValues({ ...values, birthdayErr: 'Birthdate is required' });
+      setValues({ ...values, birthdayErr: 'Birthday is required' });
       isReq = false;
     }
 
@@ -56,7 +56,7 @@ export function RegistrationView(props) {
           Username: username,
           Password: password,
           Email: email,
-          Birthdate: birthdate,
+          Birthday: birthday,
         })
         .then((response) => {
           const data = response.data;

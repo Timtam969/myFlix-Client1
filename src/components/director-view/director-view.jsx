@@ -1,44 +1,46 @@
-
-
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
-
-// Import React Bootstrap Components
-import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
+import { Button, Container, Card, CardGroup } from 'react-bootstrap';
 
 export class DirectorView extends React.Component {
+  keypressCallback(event) {
+    console.log(event.key);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keypress', this.keypressCallback);
+  }
+
   render() {
-    const { director, onBackClick, movies, movie } = this.props;
+    const { director, onBackClick } = this.props;
 
     return (
-      <Container>
-        <Card className="dir-view">
-          <Card.Header className="dir-view-header">Director</Card.Header>
-          <Card.Body className="dir-view-title">{director.Name}</Card.Body>
-          <Card.Body>Born: {director.Birth}</Card.Body>
-          <Card.Body>{director.Bio}</Card.Body>
-          <Card.Footer>
-            <Button
-              className="dir-view-button"
-              onClick={() => {
-                onBackClick();
-              }}
-            >
-              Back
-            </Button>
-          </Card.Footer>
-        </Card>
+      <Container className="director-view">
+        <CardGroup>
+          <Card>
+            <Card.Body>
+              <Card.Title>Director: {director.Name}</Card.Title>
+              <Card.Text>Bio: {director.Bio}</Card.Text>
+              <Button
+                className=""
+                onClick={() => {
+                  onBackClick();
+                }}
+              >
+                Back
+              </Button>
+            </Card.Body>
+          </Card>
+        </CardGroup>
       </Container>
     );
   }
 }
-
-DirectorView.proptypes = {
-  Director: PropTypes.shape({
+DirectorView.propTypes = {
+  director: PropTypes.shape({
     Name: PropTypes.string.isRequired,
-    Bio: PropTypes.string,
-    Birth: PropTypes.number,
+    Bio: PropTypes.string.isRequired,
   }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
 };
+export default DirectorView;

@@ -35,7 +35,7 @@ const handleSubmit = (e) => {
   const isReq = validate();
   if(isReq) {
     /* Send request to the server for authentication */
-    axios.post('YOUR_API_URL/login', {
+    axios.post('https://melsflix.herokuapp.com/login', {
         Username: username,
         Password: password
     })
@@ -49,56 +49,58 @@ const handleSubmit = (e) => {
   }
 };
 
-  return (
-    <Container fluid className="loginContainer my-3 mx-12 ">
-      <Navbar bg="light" expand="lg">
-        <Container fluid>
-          <Navbar.Brand href="#home">MyFlix</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#Register">Register</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      <Row>
-        <Col>
-          <CardGroup>
-            <Card>
-              <Card.Body className="mt-3 ">
-                <Card.Title>Welcome to MyFlix</Card.Title>
-                <Form>
-                  <Form.Group controlId="formUserName">
-                    <Form.Label>Username:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                      placeholder="Enter Username"
-                    />
-                  </Form.Group>
+return (
+  <Container fluid className="loginContainer my-3 mx-12 ">
+    <Navbar bg="light" expand="lg">
+      <Container fluid>
+        <Navbar.Brand href="#home">AppforMovies</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/register">Register</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+    <Row>
+      <Col>
+        <CardGroup>
+          <Card>
+            <Card.Body className="mt-3 ">
+              <Card.Title>Welcome to MyFlix</Card.Title>
+              <Form>
+                <Form.Group controlId="formUserName">
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Enter Username"
+                    required
+                  />
+                  {usernameErr && <p>{usernameErr}</p>}
+                </Form.Group>
 
-                  <Form.Group controlId="formPassword">
-                    <Form.Label>Password:</Form.Label>
-                    <Form.Control
-                      type="password"
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      placeholder="Enter Password"
-                    />
-                  </Form.Group>
-                  <Button className="mt-3" variant="primary" type="submit" onClick={handleSubmit}>
-                    Submit
-                  </Button>
-                </Form>
-              </Card.Body>
-            </Card>
-          </CardGroup>
-        </Col>
-      </Row>
-    </Container>
-  );
+                <Form.Group controlId="formPassword">
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter Password"
+                    required
+                  />
+                  {passwordErr && <p>{passwordErr}</p>}
+                </Form.Group>
+                <Button className="mt-3" variant="primary" type="submit" onClick={handleSubmit}>
+                  Submit
+                </Button>
+              </Form>
+            </Card.Body>
+          </Card>
+        </CardGroup>
+      </Col>
+    </Row>
+  </Container>
+);
 }
 
 LoginView.propTypes = {
