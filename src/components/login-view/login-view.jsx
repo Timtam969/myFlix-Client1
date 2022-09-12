@@ -6,22 +6,48 @@ import { Form, Button, Card, CardGroup, Container, Col, Row, Navbar, Nav } from 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
+  const [ usernameErr, setUsernameErr ] = useState('');
+  const [ passwordErr, setPasswordErr ] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post('https://melsflix.herokuapp.com/login', {
+  // validate user inputs
+const validate = () => {
+    let isReq = true;
+    if(!username){
+     setUsernameErr('Username Required');
+     isReq = false;
+    }else if(username.length < 2){
+     setUsernameErr('Username must be 2 characters long');
+     isReq = false;
+    }
+    if(!password){
+     setPasswordErr('Password Required');
+     isReq = false;
+    }else if(password.length < 6){
+     setPassword('Password must be 6 characters long');
+     isReq = false;
+    }
+
+    return isReq;
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const isReq = validate();
+  if(isReq) {
+    /* Send request to the server for authentication */
+    axios.post('YOUR_API_URL/login', {
         Username: username,
-        Password: password,
-      })
-      .then((response) => {
+        Password: password
+    })
+    .then(response =>{
         const data = response.data;
         props.onLoggedIn(data);
-      })
-      .catch((e) => {
-        console.log('no such user');
-      });
-  };
+    })
+    .catch(e => {
+      console.log('no such user')
+    });
+  }
+};
 
   return (
     <Container fluid className="loginContainer my-3 mx-12 ">
