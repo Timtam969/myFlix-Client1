@@ -25,7 +25,7 @@ export function RegistrationView(props) {
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
       </label>
       <label>
-          Email-Id:
+          Email:
       </label>
       <input type="email" value={email} onChange={e => setEmail(e.target.value)}/>
       <label>
@@ -38,5 +38,10 @@ export function RegistrationView(props) {
 }
 
 RegistrationView.propTypes = {
-    onRegistration: PropTypes.func.isRequired
+  register: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired,
+  }),
 };
