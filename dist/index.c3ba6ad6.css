@@ -1,0 +1,20 @@
+.button {
+  background: #6059a6;
+  border: none;
+}
+
+.button:hover {
+  background: #514c8d;
+  border: none;
+  transition: all .33s linear;
+}
+
+h5 {
+  color: #6059a6;
+}
+
+.my-flix {
+  color: #4682b4;
+}
+
+/*# sourceMappingURL=index.c3ba6ad6.css.map */

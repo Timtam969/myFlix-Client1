@@ -73,18 +73,6 @@ export function RegistrationView(props) {
 
   return (
     <Container fluid className="registerContainer text-center my-3 mx-12">
-      <Navbar bg="light" expand="lg">
-        <Container fluid>
-          <Navbar.Brand href="#home">AppforMovies</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/">Login</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
       <Row>
         <Col>
           <CardGroup>
