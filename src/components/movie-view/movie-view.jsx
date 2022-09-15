@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Container, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+
 
 export const MovieView = ({ movies, user, renderMovies }) => {
   const [movie, setMovie] = useState(null)
+  const navigate = useNavigate();
 
   const { movieId } = useParams()
 
@@ -62,6 +64,7 @@ export const MovieView = ({ movies, user, renderMovies }) => {
       .catch((error) => {
         console.log(error);
       });
+
   };
   console.log(movies)
   if (!!movie) {
@@ -108,13 +111,7 @@ export const MovieView = ({ movies, user, renderMovies }) => {
         </Row>
         <Row>
           <Col>
-            <Button
-              onClick={() => {
-                onBackClick();
-              }}
-            >
-              Back
-            </Button>
+            <Button className="ml-2 my-2" onClick={() => navigate(-1)}>Back</Button>
             <Button
               className="ml-2 my-2"
               onClick={() => {

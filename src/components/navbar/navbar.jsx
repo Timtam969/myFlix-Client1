@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 export function Menubar({ user, onLoggedOut }) {
   const handelLogOut = (e) => {
@@ -23,7 +24,7 @@ export function Menubar({ user, onLoggedOut }) {
     <Navbar className="main-nav" sticky="top" bg="dark" expand="lg" variant="dark">
       <Container>
         <Navbar.Brand className="navbar-logo" href="/">
-          AppForMovies
+          MyFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -43,3 +44,9 @@ export function Menubar({ user, onLoggedOut }) {
     </Navbar>
   );
 }
+
+Navbar.propTypes = {
+	user:PropTypes.string.isRequired
+ };
+
+ export default Navbar

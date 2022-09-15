@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, CardGroup, Container, Col, Row } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
@@ -28,3 +29,10 @@ export class MovieCard extends React.Component {
     );
   }
 }
+
+MovieCard.propTypes = {
+	movie: PropTypes.shape({
+		Title: PropTypes.string.isRequired,
+		ImagePath: PropTypes.string,
+	}).isRequired,
+};
