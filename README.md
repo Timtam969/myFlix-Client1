@@ -6,5 +6,3 @@ The web application, created with React.js and Sass, will provide users with acc
 - React.js
 - Sass
 
-## Authors
-Melissa White
